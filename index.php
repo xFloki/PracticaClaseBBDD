@@ -5,11 +5,17 @@
         <meta charset="UTF-8">
         <title>Prueba de PHP</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                background: black;
+                background-image: url("img/tile2.png");
+            }
+        </style>
     </head>
     <body>
         <div class="container">
             <div class="row">
-                 <div class="col-md-12"><h2 class="text-center">EJEMPLO DE INICIO DE SESIÓN EN PHP</h2></div>
+                 <div class="col-md-12"><h2 class="text-center" style="color:white;">EJEMPLO DE INICIO DE SESIÓN EN PHP</h2></div>
             </div>
             <div class="row">
                 <div class="col-md-4"></div>
