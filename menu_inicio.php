@@ -1,5 +1,8 @@
 <?php
-//ahora session_start() continua con la sesion que creamos antes 
+//ahora session_start() continua con la sesion que creamos antes holi
+
+//HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
 session_start();
 if (!isset($_SESSION)) {session_start();}
         $nombre = $_SESSION['Nombre'];
