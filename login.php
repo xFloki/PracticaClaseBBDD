@@ -24,9 +24,9 @@ if ($numero_dnis > 0) {
     $DNI = $r['DNI'];
     $password = $r['Password'];
     if ($usuario_clave == $password) {
-        require 'menu_inicio.php';
-        //inicializo la sesion
+       //inicializo la sesion
         session_start();
+        require 'menu_inicio.php';        
         //guardo los datos del usuario que ha hecho login correcto 
         $_SESSION['DNI'] = $DNI;
         $_SESSION['Nombre'] = $r['Nombre'];
