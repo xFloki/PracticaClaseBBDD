@@ -13,21 +13,21 @@
         </style>
     </head>
     <body>
-        <div class="container">
+        <div class="container" id="centro">
             <div class="row">
                  <div class="col-md-12"><h2 class="text-center" style="color:white;">EJEMPLO DE INICIO DE SESIÓN EN PHP</h2></div>
             </div>
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <form action="index2.php" method="post">
+<!--                    <form action="index2.php" method="post">-->
                         <br>
-                        <input name="usuario_nombre" class="form-control" type="text" placeholder="Usuario">
+                        <input id="usuario_nombre" class="form-control" type="text" placeholder="Usuario">
                         <br>
-                        <input name="usuario_clave"  class="form-control" type="password" placeholder="Contraseña">
+                        <input id="usuario_clave"  class="form-control" type="password" placeholder="Contraseña">
                         <br>
-                        <button class="btn btn-success btn-block" type="submit"> Entrar</button>
-                    </form>
+                        <button class="btn btn-success btn-block" onclick="chequeaPass();"> Entrar</button>
+<!--                    </form>-->
                 </div>
                 <div class="col-md-4"></div>
             </div>
@@ -38,4 +38,16 @@
     </body>
     <script src="js/jquery-3.1.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+      <script>
+          function chequeaPass(){
+              var _usuario_nombre = $('#usuario_nombre').val();
+              var _usuario_clave = $('#usuario_clave').val();
+//              console.log(_usuario_nombre);
+            $('#centro').load("login.php",{
+                usuario_nombre : _usuario_nombre,
+                usuario_clave:_usuario_clave
+            });
+              
+          }
+      </script>
 </html>
