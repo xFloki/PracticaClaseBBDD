@@ -1,3 +1,11 @@
+<?php
+//ahora session_start() continua con la sesion que creamos antes 
+session_start();
+if (!isset($_SESSION)) {session_start();}
+        $nombre = $_SESSION['Nombre'];
+
+?>
+
 <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -29,8 +37,8 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li><a href="../navbar-static-top/"><?php echo $nombre; ?> </a></li>
+            <li class="active"><a href="./"> <span class="sr-only">(current)</span></a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

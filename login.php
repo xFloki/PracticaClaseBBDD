@@ -4,6 +4,7 @@
 include ('./misfunciones.php');
 $mysqli = conectaBBDD();
 
+
 // leo os parametros que me pasa el index.php
 $usuario_nombre = $_POST['usuario_nombre'];
 $usuario_clave = $_POST['usuario_clave'];
@@ -24,6 +25,12 @@ if ($numero_dnis > 0) {
     $password = $r['Password'];
     if ($usuario_clave == $password) {
         require 'menu_inicio.php';
+        //inicializo la sesion
+        session_start();
+        //guardo los datos del usuario que ha hecho login correcto 
+        $_SESSION['DNI'] = $DNI;
+        $_SESSION['Nombre'] = $r['Nombre'];
+        $_SESSION['Email'] = $r['Email'];
     } else {
         require 'mensaje_error.php';
     }
