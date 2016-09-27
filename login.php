@@ -22,8 +22,13 @@ if ($numero_dnis > 0) {
 
     $r = $resultado_consulta->fetch_array();
     $DNI = $r['DNI'];
+    
     $password = $r['Password'];
     if ($usuario_clave == $password) {
+        if(isset($_POST['remember'])){
+             setcookie('DNI', $DNI, time()+60*60*7);
+             setcookie('password', $password, time()+60*60*7);
+         } 
        //inicializo la sesion
         session_start();
         require 'menu_inicio.php';        
@@ -31,8 +36,14 @@ if ($numero_dnis > 0) {
         $_SESSION['DNI'] = $DNI;
         $_SESSION['Nombre'] = $r['Nombre'];
         $_SESSION['Email'] = $r['Email'];
+        
     } else {
-        require 'mensaje_error.php';
+         session_start();
+         $_SESSION['error'] = "La contraseña o el usuario no son correctos";
+         
+         
+       header('location: index.php');
+        
     }
 } else {
     require 'mensaje_error.php';
