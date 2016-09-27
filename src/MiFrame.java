@@ -15,7 +15,10 @@ import javax.swing.JFileChooser;
 
 
 public class MiFrame extends javax.swing.JFrame {
-
+    
+     DOM gesDOM = new DOM();
+     File archivoSeleccionado;
+    
     /**
      * Creates new form MiFrame
      */
@@ -74,6 +77,11 @@ public class MiFrame extends javax.swing.JFrame {
 
         jButton2.setText("Mostrar contenido DOM");
         jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Mostrar contenido SAX");
         jButton3.setEnabled(false);
@@ -154,7 +162,7 @@ public class MiFrame extends javax.swing.JFrame {
                     .addComponent(jButton4))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48))
                     .addGroup(layout.createSequentialGroup()
@@ -180,7 +188,7 @@ public class MiFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -188,9 +196,19 @@ public class MiFrame extends javax.swing.JFrame {
         chooser.setCurrentDirectory(new File("C:\\Users\\xp\\Documents"));
         int retrival = chooser.showSaveDialog(null);
         if (retrival == JFileChooser.APPROVE_OPTION) {
-
+               archivoSeleccionado = chooser.getSelectedFile();
+                gesDOM.abrir_XML_DOM(archivoSeleccionado);
+        if( gesDOM.abrir_XML_DOM(archivoSeleccionado) == 0){
+                jButton2.setEnabled(true);
+            }
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+       jTextArea1.setText(gesDOM.recorrerDOMyMostrar(gesDOM.doc)); 
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
