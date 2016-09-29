@@ -1,9 +1,14 @@
 
+import com.sun.org.apache.xml.internal.serialize.OutputFormat;
+import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import java.io.File;
+import java.io.FileOutputStream;
+import javax.swing.JFileChooser;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -86,5 +91,72 @@ public class DOM {
         }
         return salida;
     }
+
+    public int annadirDOM(String titulo, String autor, String anno) {
+        try {
+            //Se crea un nodo tipo Element con nombre ‘titulo’(<Titulo>)
+            Node ntitulo = doc.createElement("Titulo");
+            //Se crea un nodo tipo texto con el título del libro
+            Node ntitulo_text = doc.createTextNode(titulo);
+            //Se añade el nodo de texto con el título como hijo del elemento Titulo
+            ntitulo.appendChild(ntitulo_text);
+            //Se hace lo mismo que con título a autor (<Autor>)
+            Node nautor = doc.createElement("Autor");
+            Node nautor_text = doc.createTextNode(autor);
+            nautor.appendChild(nautor_text);
+            //Se crea un nodo de tipo elemento (<libro>)
+            Node nlibro = doc.createElement("Libro");
+            //Al nuevo nodo libro se le añade un atributo publicado_en
+            ((Element) nlibro).setAttribute("publicado_en", anno);
+            //Se añade a libro el nodo autor y titulo creados antes
+            nlibro.appendChild(ntitulo);
+            nlibro.appendChild(nautor);
+            //Se obtiene el primer nodo del documento y a él se le añade como
+            //hijo el nodo libro que ya tiene colgando todos sus hijos y atributos creados antes.
+            Node raiz = doc.getChildNodes().item(0);
+            raiz.appendChild(nlibro);
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    
+    public void cambiarTitulo(String titulo, String nuevoTitulo){
+        //NO FUNCIONA, EN PROGRESO  
+        NodeList nodes = doc.getElementsByTagName(titulo);
+        for (int i = 0; i < nodes.getLength(); i++) {
+        doc.renameNode(nodes.item(i), null,nuevoTitulo);
+    
+        }
+    }
+    
+    public int guardarDOMcomoFILE() {
+        try{
+        //Crea un fichero llamado salida.xml
+        JFileChooser chooser = new JFileChooser();
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+              File archivoSeleccionado = chooser.getSelectedFile();
+             
+               File archivo_xml = new File(archivoSeleccionado + ".xml");
+        //Especifica el formato de salida
+        OutputFormat format = new OutputFormat(doc);
+        //Especifica que la salida esté indentada.
+        format.setIndenting(true);
+        //Escribe el contenido en el FILE
+        XMLSerializer serializer = new XMLSerializer(new
+        FileOutputStream(archivo_xml) , format);
+        serializer.serialize(doc);       
+        
+        }
+       
+       
+        return 0;
+        }
+        catch(Exception e) {
+         return -1;
+        }
+        }
 
 }
