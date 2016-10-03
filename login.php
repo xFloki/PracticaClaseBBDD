@@ -21,16 +21,24 @@ if ($numero_dnis > 0) {
     //Voy a leer el campo dni y el campo pw de la bdd
 
     $r = $resultado_consulta->fetch_array();
-    $DNI = $r['DNI'];
     
+    $DNI = $r['DNI'];
     $password = $r['Password'];
     if ($usuario_clave == $password) {
-        if(isset($_POST['remember'])){
+         //inicializo la sesion
+        session_start();
+        
+        if(isset($_POST['recordar']) && 
+            $_POST['recordar'] == 'on') 
+            
+            {
              setcookie('DNI', $DNI, time()+60*60*7);
              setcookie('password', $password, time()+60*60*7);
+            
+            
+             
          } 
-       //inicializo la sesion
-        session_start();
+      
         require 'menu_inicio.php';        
         //guardo los datos del usuario que ha hecho login correcto 
         $_SESSION['DNI'] = $DNI;
@@ -38,7 +46,7 @@ if ($numero_dnis > 0) {
         $_SESSION['Email'] = $r['Email'];
         
     } else {
-         session_start();
+//         session_start();
          $_SESSION['error'] = "La contraseña o el usuario no son correctos";
          
          

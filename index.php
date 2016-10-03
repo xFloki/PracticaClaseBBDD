@@ -21,23 +21,18 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
 <!--                    <form action="index2.php" method="post">-->
+                  
                         <br>
                         <input id="usuario_nombre" class="form-control" type="text" placeholder="Usuario">
                         <br>
                         <input id="usuario_clave"  class="form-control" type="password" placeholder="Contraseña">
                          <br>
-                        <p style="color:white;"> <input id="remember" type="checkbox" > Recuérdame</p>
-<!--                     
-                       if(isset($_SESSION['error'])) { echo '
-                                <br><div id="error">'.$_SESSION['error'].'</div><br>';
-                                echo 'holaaaaaaaaa';
-                                
-                                unset($_SESSION['error']);
-                        }
-                        -->
+                            <p style="color:white;"> <input id="recordar" type="checkbox"  > Recuérdame </p>
                         
-                        <button class="btn btn-success btn-block" onclick="chequeaPass();"> Entrar</button>
-<!--                    </form>-->
+                        
+                        
+                         <button class="btn btn-success btn-block" onclick="chequeaPass();"> Entrar</button>
+<!--                  </form>-->
 
 
                 </div>
@@ -52,10 +47,12 @@ if (!isset($_SESSION)) {session_start();}
          if (isset($_COOKIE['DNI']) and isset($_COOKIE['password'])) {
             $nombre = $_COOKIE['DNI'];
             $password = $_COOKIE['password']; 
+          
             
             echo  "<script>
-                document.getElementById('usuario_nombre').value = '$DNI';
-                 document.getElementById('usuario_clave').value = '$password';   
+                document.getElementById('usuario_nombre').value = '$nombre';
+                 document.getElementById('usuario_clave').value = '$password';
+                document.getElementById('recordar').checked = true;
                 </script>";
                     
         }
@@ -68,9 +65,17 @@ if (!isset($_SESSION)) {session_start();}
       <script>
           function chequeaPass(){
               var _usuario_nombre = $('#usuario_nombre').val();
-              var _usuario_clave = $('#usuario_clave').val();
-//              console.log(_usuario_nombre);
+              var _usuario_clave = $('#usuario_clave').val();            
+               if( document.getElementById('recordar').checked == true){
+                    var _recordar = 'on';
+                } else {
+                    var _recordar = 'off';
+                }
+              console.log(_recordar);
+              console.log(_usuario_nombre);
             $('#centro').load("login.php",{
+               
+                recordar : _recordar,
                 usuario_nombre : _usuario_nombre,
                 usuario_clave:_usuario_clave
             });
