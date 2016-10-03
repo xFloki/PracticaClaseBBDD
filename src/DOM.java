@@ -124,10 +124,12 @@ public class DOM {
     
     public void cambiarTitulo(String titulo, String nuevoTitulo){
         //NO FUNCIONA, EN PROGRESO  
-        NodeList nodes = doc.getElementsByTagName(titulo);
+        NodeList nodes = doc.getElementsByTagName("Titulo");
         for (int i = 0; i < nodes.getLength(); i++) {
-        doc.renameNode(nodes.item(i), null,nuevoTitulo);
-    
+            if(nodes.equals(titulo)){             
+                doc.setTextContent(nuevoTitulo);    
+            }
+   
         }
     }
     
