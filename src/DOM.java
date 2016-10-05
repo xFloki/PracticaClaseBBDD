@@ -122,7 +122,7 @@ public class DOM {
         }
     }
     
-    public void cambiarTitulo(String titulo, String nuevoTitulo){
+    public int cambiarTitulo(String titulo, String nuevoTitulo){
         //NO FUNCIONA, EN PROGRESO  
         Node node;
         NodeList nodes = doc.getElementsByTagName("Titulo");
@@ -130,9 +130,11 @@ public class DOM {
             node = nodes.item(i);
             if(node.getTextContent().equalsIgnoreCase(titulo)){
                 node.setTextContent(nuevoTitulo);
+                return 0;
             }
    
         }
+        return -1;
     }
     
     public int guardarDOMcomoFILE() {

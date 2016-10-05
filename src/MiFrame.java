@@ -9,23 +9,19 @@ import org.w3c.dom.NodeList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author xp
  */
-
-
 public class MiFrame extends javax.swing.JFrame {
-    
-     DOM gesDOM = new DOM();
-     SAX gesSAX = new SAX();
-     File archivoSeleccionado;
-     String nuevoTitulo;
-     String nuevoAutor;
-             String nuevaPublicacion;
-    
-    
+
+    DOM gesDOM = new DOM();
+    SAX gesSAX = new SAX();
+    File archivoSeleccionado;
+    String nuevoTitulo;
+    String nuevoAutor;
+    String nuevaPublicacion;
+
     /**
      * Creates new form MiFrame
      */
@@ -33,7 +29,7 @@ public class MiFrame extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,26 +44,26 @@ public class MiFrame extends javax.swing.JFrame {
         labelTituloNL = new javax.swing.JLabel();
         labelAutorNL = new javax.swing.JLabel();
         labelPublicadoNL = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonGuardar = new javax.swing.JButton();
+        jButtonDOM = new javax.swing.JButton();
+        jButtonSAX = new javax.swing.JButton();
+        jButtonJAXB = new javax.swing.JButton();
         jTextFieldTituloNL = new javax.swing.JTextField();
         jTextFieldAutorNL = new javax.swing.JTextField();
         jTextFieldPublicadoNL = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jButtonAnnadir = new javax.swing.JButton();
+        jLabelMensajes = new javax.swing.JLabel();
+        jTextFieldTituloAntiguo = new javax.swing.JTextField();
+        jTextFieldTituloNuevo = new javax.swing.JTextField();
+        jLabelTituloAnterior = new javax.swing.JLabel();
+        jLabelNuevoTitulo = new javax.swing.JLabel();
+        jButtonCambiaTitulo = new javax.swing.JButton();
+        jLabelCambiaTitulo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItemDOM = new javax.swing.JMenuItem();
+        jMenuItemJAX = new javax.swing.JMenuItem();
+        jMenuItemJAXB = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,75 +77,75 @@ public class MiFrame extends javax.swing.JFrame {
 
         labelPublicadoNL.setText("Publicado en ");
 
-        jButton1.setText("Guardar DOM como salida XML");
-        jButton1.setEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGuardar.setText("Guardar DOM como salida XML");
+        jButtonGuardar.setEnabled(false);
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonGuardarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Mostrar contenido DOM");
-        jButton2.setEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDOM.setText("Mostrar contenido DOM");
+        jButtonDOM.setEnabled(false);
+        jButtonDOM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonDOMActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Mostrar contenido SAX");
-        jButton3.setEnabled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSAX.setText("Mostrar contenido SAX");
+        jButtonSAX.setEnabled(false);
+        jButtonSAX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonSAXActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Mostrar contenido JAXB");
-        jButton4.setEnabled(false);
+        jButtonJAXB.setText("Mostrar contenido JAXB");
+        jButtonJAXB.setEnabled(false);
 
-        jButton5.setText("Añadir");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAnnadir.setText("Añadir");
+        jButtonAnnadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonAnnadirActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("<fichero no seleccionado>");
+        jLabelMensajes.setText("<fichero no seleccionado>");
 
-        jLabel5.setText("Titulo Anterior");
+        jLabelTituloAnterior.setText("Titulo Anterior");
 
-        jLabel6.setText("Nuevo Titulo");
+        jLabelNuevoTitulo.setText("Nuevo Titulo");
 
-        jButton6.setText("Cambiar Titulo");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCambiaTitulo.setText("Cambiar Titulo");
+        jButtonCambiaTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonCambiaTituloActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Cambiar Titulo");
+        jLabelCambiaTitulo.setText("Cambiar Titulo");
 
         jMenu1.setText("Ficheros XML");
 
-        jMenuItem1.setText("DOM");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDOM.setText("DOM");
+        jMenuItemDOM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemDOMActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMenuItemDOM);
 
-        jMenuItem2.setText("SAX");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemJAX.setText("SAX");
+        jMenuItemJAX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemJAXActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(jMenuItemJAX);
 
-        jMenuItem3.setText("JAXB");
-        jMenu1.add(jMenuItem3);
+        jMenuItemJAXB.setText("JAXB");
+        jMenu1.add(jMenuItemJAXB);
 
         jMenuBar1.add(jMenu1);
 
@@ -163,11 +159,11 @@ public class MiFrame extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonDOM, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSAX, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonJAXB, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,37 +181,37 @@ public class MiFrame extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jTextFieldPublicadoNL, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(44, 44, 44)
-                                        .addComponent(jButton5))))
+                                        .addComponent(jButtonAnnadir))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton6)
+                                .addComponent(jButtonCambiaTitulo)
                                 .addGap(110, 110, 110))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelCambiaTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(91, 91, 91))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabelTituloAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 78, Short.MAX_VALUE)
+                                    .addComponent(jLabelNuevoTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jTextFieldTituloAntiguo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldTituloNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(38, 38, 38))
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabelMensajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelMensajes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButtonDOM)
+                    .addComponent(jButtonSAX)
+                    .addComponent(jButtonJAXB))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
@@ -233,85 +229,132 @@ public class MiFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelPublicadoNL)
                             .addComponent(jTextFieldPublicadoNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5))
+                            .addComponent(jButtonAnnadir))
                         .addGap(32, 32, 32)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
+                        .addComponent(jLabelCambiaTitulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(jTextFieldTituloAntiguo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelTituloAnterior))
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                            .addComponent(jTextFieldTituloNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelNuevoTitulo))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6)))
+                        .addComponent(jButtonCambiaTitulo)))
                 .addGap(48, 48, 48))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        gesDOM.guardarDOMcomoFILE();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-            JFileChooser chooser = new JFileChooser();
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        gesDOM.guardarDOMcomoFILE();
+
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void jMenuItemDOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDOMActionPerformed
+        JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new File("C:\\Users\\xp\\Documents"));
         int retrival = chooser.showOpenDialog(null);
+        //Abrimos un File chooser, si seleccionamos un archivo y se abre el DOM correctamente habilitamos el boton de 
+        //mostar Dom y mostramos un mensaje en el label de que se ha abierto el fichero correctamente 
+        //si el DOM da un error al abrirse lo notificamos con un mensaje en el label de notificaciones
         if (retrival == JFileChooser.APPROVE_OPTION) {
-               archivoSeleccionado = chooser.getSelectedFile();
-                gesDOM.abrir_XML_DOM(archivoSeleccionado);
-        if( gesDOM.abrir_XML_DOM(archivoSeleccionado) == 0){
-                jButton2.setEnabled(true);
+            archivoSeleccionado = chooser.getSelectedFile();
+            gesDOM.abrir_XML_DOM(archivoSeleccionado);
+            if (gesDOM.abrir_XML_DOM(archivoSeleccionado) == 0) {
+                jLabelMensajes.setText("<DOM abierto correctamente>");
+                jButtonDOM.setEnabled(true);
+            } else {
+                jLabelMensajes.setText("<Se ha producido un error al abrir el DOM>");
             }
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemDOMActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonDOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDOMActionPerformed
         // TODO add your handling code here:
-       jTextArea1.setText(gesDOM.recorrerDOMyMostrar(gesDOM.doc)); 
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-          nuevoTitulo = jTextFieldTituloNL.getText();
-       nuevoAutor = jTextFieldAutorNL.getText();
-       nuevaPublicacion = jTextFieldPublicadoNL.getText();
-        gesDOM.annadirDOM( nuevoTitulo, nuevoAutor, nuevaPublicacion);
-        jButton1.setEnabled(true);
-
-        
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       gesDOM.cambiarTitulo(jTextField4.getText(), jTextField5.getText());       
-        gesDOM.guardarDOMcomoFILE();
+        //Mostramos el contenido del DOM en el text area y lo comunidamos en el label de mensajes
         jTextArea1.setText(gesDOM.recorrerDOMyMostrar(gesDOM.doc));
-//         gesDOM.guardarDOMcomoFILE();
-        
-    }//GEN-LAST:event_jButton6ActionPerformed
+        jLabelMensajes.setText("<el DOM se ha mostrado correctamente>");
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-          JFileChooser chooser = new JFileChooser();   
-           int retrival = chooser.showSaveDialog(null);
-        if (retrival == JFileChooser.APPROVE_OPTION) {
-               archivoSeleccionado = chooser.getSelectedFile();
-                gesSAX.abrir_XML_SAX(archivoSeleccionado);              
-        
-                jButton3.setEnabled(true);
+
+    }//GEN-LAST:event_jButtonDOMActionPerformed
+
+    private void jButtonAnnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnnadirActionPerformed
+
+        nuevoTitulo = jTextFieldTituloNL.getText();
+        nuevoAutor = jTextFieldAutorNL.getText();
+        nuevaPublicacion = jTextFieldPublicadoNL.getText();
+
+        //Compruebo que los textfield de los datos del libro que se va a añadir tengan todos contenido
+        //el trim() lo utilizamos para borrar los espacios antes y destras del contenido, de este modo si una
+        //de las casillas son espacios en blanco nos dara como que faltan datos 
+        //Si estan todos los datos añadimos el libro en el DOC y los motramos por pantalla y solo quedaria dar al boton
+        //de guardar que se habilita
+        if (!nuevoTitulo.trim().isEmpty() && !nuevoTitulo.trim().isEmpty() && !nuevoTitulo.trim().isEmpty()) {
             
+            if (gesDOM.annadirDOM(nuevoTitulo, nuevoAutor, nuevaPublicacion) == 0) {
+                jLabelMensajes.setText("<libro añadido, guarde el DOM para continuar");
+                jButtonGuardar.setEnabled(true);
+                jTextArea1.setText(gesDOM.recorrerDOMyMostrar(gesDOM.doc));
+            } else {
+                jLabelMensajes.setText("<error al insertar nuevo libro>");
+            }
+        } else {
+            jLabelMensajes.setText("<debe introducir todos los datos del libro>");
         }
-       
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      jTextArea1.setText(gesSAX.recorrerSAX(archivoSeleccionado, gesSAX.sh, gesSAX.parser)); 
-    }//GEN-LAST:event_jButton3ActionPerformed
+
+    }//GEN-LAST:event_jButtonAnnadirActionPerformed
+
+    private void jButtonCambiaTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCambiaTituloActionPerformed
+        //Al igual que hacemos a la hora de introducir un nuevo libro, si los campos de nuevo titulo 
+        //y titulo antiguo no estan vacios procedemos a cambiar el titulo por el titulo nuevo
+        //El titulo se cambiara siempre y cuando coincida con uno de los existentes, sin importar que las mayusculas esten
+        //escritas correctamente, suponemos que no hay mas de un titulo con el mismo nombre, en el caso de que lo hubiera 
+        //cambiaria el primero 
+
+        if (!jTextFieldTituloAntiguo.getText().trim().isEmpty() && !jTextFieldTituloNuevo.getText().trim().isEmpty()) {
+           //Si cambiar titulo devuelve 0 es que ha encontrado un titulo con el mismo nombre y lo ha encontrado
+           //de lo contrario no hay ningun titulo con el mismo nombre, en ambas ocasiones se informa por el label de mensajes
+            if (gesDOM.cambiarTitulo(jTextFieldTituloAntiguo.getText(), jTextFieldTituloNuevo.getText()) == 0) {
+                //Una vez cambiado se guarda y se refresca en pantalla
+                gesDOM.guardarDOMcomoFILE();
+                jTextArea1.setText(gesDOM.recorrerDOMyMostrar(gesDOM.doc));
+                 jLabelMensajes.setText("<titulo cambiado correctamente>");
+                 //Una vez cambiado reseteamos los textfields
+                 jTextFieldTituloAntiguo.setText("");
+                 jTextFieldTituloNuevo.setText("");
+            } else {
+                jLabelMensajes.setText("<no se ha encontrado ningun Titulo con ese nombre, pruebe de nuevo>");
+            }
+
+        } else {
+            jLabelMensajes.setText("<debe introducir el nombre del titulo a cambiar y su nuevo nombre >");
+        }
+//         gesDOM.guardarDOMcomoFILE();
+
+    }//GEN-LAST:event_jButtonCambiaTituloActionPerformed
+
+    private void jMenuItemJAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemJAXActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+            archivoSeleccionado = chooser.getSelectedFile();
+            gesSAX.abrir_XML_SAX(archivoSeleccionado);
+
+            jButtonSAX.setEnabled(true);
+
+        }
+
+    }//GEN-LAST:event_jMenuItemJAXActionPerformed
+
+    private void jButtonSAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSAXActionPerformed
+        jTextArea1.setText(gesSAX.recorrerSAX(archivoSeleccionado, gesSAX.sh, gesSAX.parser));
+    }//GEN-LAST:event_jButtonSAXActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,28 +392,28 @@ public class MiFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jButtonAnnadir;
+    private javax.swing.JButton jButtonCambiaTitulo;
+    private javax.swing.JButton jButtonDOM;
+    private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonJAXB;
+    private javax.swing.JButton jButtonSAX;
+    private javax.swing.JLabel jLabelCambiaTitulo;
+    private javax.swing.JLabel jLabelMensajes;
+    private javax.swing.JLabel jLabelNuevoTitulo;
+    private javax.swing.JLabel jLabelTituloAnterior;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemDOM;
+    private javax.swing.JMenuItem jMenuItemJAX;
+    private javax.swing.JMenuItem jMenuItemJAXB;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextFieldAutorNL;
     private javax.swing.JTextField jTextFieldPublicadoNL;
+    private javax.swing.JTextField jTextFieldTituloAntiguo;
     private javax.swing.JTextField jTextFieldTituloNL;
+    private javax.swing.JTextField jTextFieldTituloNuevo;
     private javax.swing.JLabel labelAutorNL;
     private javax.swing.JLabel labelPublicadoNL;
     private javax.swing.JLabel labelTituloNL;
