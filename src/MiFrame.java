@@ -17,6 +17,7 @@ public class MiFrame extends javax.swing.JFrame {
 
     DOM gesDOM = new DOM();
     SAX gesSAX = new SAX();
+    JAXB gesJAXB = new JAXB();
     File archivoSeleccionado;
     String nuevoTitulo;
     String nuevoAutor;
@@ -103,8 +104,13 @@ public class MiFrame extends javax.swing.JFrame {
 
         jButtonJAXB.setText("Mostrar contenido JAXB");
         jButtonJAXB.setEnabled(false);
+        jButtonJAXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonJAXBActionPerformed(evt);
+            }
+        });
 
-        jButtonAnnadir.setText("AÃ±adir");
+        jButtonAnnadir.setText("Añadir");
         jButtonAnnadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAnnadirActionPerformed(evt);
@@ -145,6 +151,11 @@ public class MiFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItemJAX);
 
         jMenuItemJAXB.setText("JAXB");
+        jMenuItemJAXB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemJAXBActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItemJAXB);
 
         jMenuBar1.add(jMenu1);
@@ -355,6 +366,22 @@ public class MiFrame extends javax.swing.JFrame {
     private void jButtonSAXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSAXActionPerformed
         jTextArea1.setText(gesSAX.recorrerSAX(archivoSeleccionado, gesSAX.sh, gesSAX.parser));
     }//GEN-LAST:event_jButtonSAXActionPerformed
+
+    private void jMenuItemJAXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemJAXBActionPerformed
+         JFileChooser chooser = new JFileChooser();
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+            archivoSeleccionado = chooser.getSelectedFile();
+            gesJAXB.abrir_XML_JAXB(archivoSeleccionado);
+
+            jButtonJAXB.setEnabled(true);
+
+        }
+    }//GEN-LAST:event_jMenuItemJAXBActionPerformed
+
+    private void jButtonJAXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJAXBActionPerformed
+        jTextArea1.setText(gesJAXB.recorrerJAXByMostrar());
+    }//GEN-LAST:event_jButtonJAXBActionPerformed
 
     /**
      * @param args the command line arguments
